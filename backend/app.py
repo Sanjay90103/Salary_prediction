@@ -2,12 +2,14 @@ import os
 import joblib
 import pandas as pd
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 
 app = Flask(
     __name__,
     template_folder="../frontend/templates",
     static_folder="../frontend/static"
 )
+CORS(app)
 
 # Path to the serialized ML model pipeline
 MODEL_PATH = os.path.join("models", "salary_model.pkl")
