@@ -95,7 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
             };
             
             try {
-                const response = await fetch("https://salary-prediction-o1cz.onrender.com/api/predict", {
+                // Dynamically read from the injected environment variable
+                const apiUrl = window.ENV_API_URL || "";
+                const response = await fetch(`${apiUrl}/api/predict`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
