@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
             };
             
             try {
-                const response = await fetch("/api/predict", {
+                const response = await fetch("https://salary-prediction-o1cz.onrender.com/api/predict", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
