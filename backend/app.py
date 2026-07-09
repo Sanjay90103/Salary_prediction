@@ -3,7 +3,11 @@ import joblib
 import pandas as pd
 from flask import Flask, render_template, request, jsonify
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="../frontend/templates",
+    static_folder="../frontend/static"
+)
 
 # Path to the serialized ML model pipeline
 MODEL_PATH = os.path.join("models", "salary_model.pkl")
