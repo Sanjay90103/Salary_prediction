@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Global Alert Box -->
+<div id="globalAlert" class="alert alert-danger" role="alert"></div>
+
+<div class="prediction-wrapper">
+    <!-- Left Column: Form Card -->
+    <div class="card" style="position: relative;">
+        <!-- Loading Spinner Overlay -->
+        <div id="spinnerOverlay" class="spinner-overlay">
+            <div class="spinner"></div>
+        </div>
+        
+        <h1 class="card-title">Employee Details</h1>
+        <p class="card-subtitle">Please enter correct demographic and professional details below to generate a salary prediction.</p>
+        
+        <form id="predictForm" novalidate>
+            <!-- Name Input -->
+            <div class="form-group">
+                <label for="name" class="form-label">Employee Name</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="e.g., Jane Doe" required>
+                <span class="form-error-msg"></span>
+            </div>
+            
+            <!-- Age Input -->
+            <div class="form-group">
+                <label for="age" class="form-label">Age (Years)</label>
+                <input type="number" id="age" name="age" class="form-input" placeholder="Min 21 - Max 65" min="21" max="65" required>
+                <span class="form-error-msg"></span>
+            </div>
+            
+            <!-- Education Select -->
+            <div class="form-group">
+                <label for="education" class="form-label">Education Level</label>
+                <select id="education" name="education" class="form-input" required>
+                    <option value="" disabled selected>Select level of education...</option>
+                    <option value="Bachelor's">Bachelor's Degree</option>
+                    <option value="Master's">Master's Degree</option>
+                    <option value="PhD">PhD</option>
+                </select>
+                <span class="form-error-msg"></span>
+            </div>
+            
+            <!-- Years of Experience Input -->
+            <div class="form-group">
+                <label for="experience" class="form-label">Years of Experience</label>
+                <input type="number" id="experience" name="experience" class="form-input" placeholder="e.g., 5" min="0" max="45" required>
+                <span class="form-error-msg"></span>
+            </div>
+            
+            <!-- Job Role Searchable Dropdown -->
+            <div class="form-group">
+                <label for="role" class="form-label">Job Role</label>
+                <div class="autocomplete-wrapper" style="position: relative;">
+                    <input type="text" id="role" name="role" class="form-input" placeholder="Search or select job role..." autocomplete="off" required>
+                    <div id="roleSuggestions" class="suggestions-container" style="display: none;"></div>
+                </div>
+                <span class="form-error-msg"></span>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Predict Salary</button>
+        </form>
+    </div>
+
+    <!-- Right Column: Results Card -->
+    <div id="resultsCard" class="results-card">
+        <!-- Default State: Placeholder -->
+        <div id="resultsPlaceholder" class="results-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+            <h3>Ready for Prediction</h3>
+            <p style="font-size: 0.9rem; line-height: 1.5;">Fill out the form on the left with employee attributes and click "Predict Salary" to calculate the estimated pay scale.</p>
+        </div>
+        
+        <!-- Active State: Real Results -->
+        <div id="resultsActive" class="results-active">
+            <div class="result-header">
+                <div class="result-greeting">Salary Projection for</div>
+                <div id="resName" class="result-title">Jane Doe</div>
+            </div>
+            
+            <div class="salary-box">
+                <div class="salary-label">Estimated Annual Salary</div>
+                <div id="resAnnual" class="salary-val">$0.00 / year</div>
+            </div>
+            
+            <div class="salary-box" style="border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 20px;">
+                <div class="salary-label">Estimated Monthly Salary</div>
+                <div id="resMonthly" class="salary-val-monthly">$0.00 / month</div>
+            </div>
+            
+            <div class="result-breakdown">
+                <div style="font-size: 0.75rem; text-transform: uppercase; color: #a5b4fc; margin-bottom: 10px; font-weight: 700;">Input Profile</div>
+                
+                <div class="breakdown-row">
+                    <span class="breakdown-lbl">Job Role</span>
+                    <span id="bldRole" class="breakdown-val">-</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="breakdown-lbl">Experience</span>
+                    <span id="bldExp" class="breakdown-val">-</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="breakdown-lbl">Education</span>
+                    <span id="bldEdu" class="breakdown-val">-</span>
+                </div>
+                <div class="breakdown-row">
+                    <span class="breakdown-lbl">Age</span>
+                    <span id="bldAge" class="breakdown-val">-</span>
+                </div>
+            </div>
+            
+            <button id="resetBtn" class="btn" style="width: 100%; background-color: rgba(255,255,255,0.15); color: white; border: none;">
+                Predict Another
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

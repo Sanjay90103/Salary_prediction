@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Predict Salaries with Machine Learning</h1>
+        <p>A data-driven web application that uses a trained Random Forest Regressor model to estimate annual and monthly compensation. Input demographic and professional parameters to receive a mathematically modeled salary projection.</p>
+        <div style="display: flex; gap: 15px;">
+            <a href="/predict" class="btn btn-primary">Start Prediction</a>
+            <a href="#features" class="btn btn-secondary">Learn More</a>
+        </div>
+    </div>
+    <div class="hero-illustration">
+        <div class="salary-card-preview">
+            <div style="font-size: 0.85rem; color: var(--color-primary); font-weight: 600; text-transform: uppercase; margin-bottom: 6px;">Sample Projection</div>
+            <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px;">Senior Software Engineer</h3>
+            <div style="margin-bottom: 15px;">
+                <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">Estimated Annual Salary</div>
+                <div style="font-size: 1.8rem; font-weight: 800; color: var(--color-primary);">₹12,84,000 <span style="font-size: 1rem; font-weight: 400; color: var(--text-secondary);">/ year</span></div>
+            </div>
+            <div>
+                <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary);">Estimated Monthly Salary</div>
+                <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-success);">₹1,07,000 <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-secondary);">/ month</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features / How it Works Section -->
+<section id="features" style="padding-top: 40px;">
+    <h2 class="section-title">Key System Features</h2>
+    <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+            <div class="feature-icon">⚙️</div>
+            <h3>End-to-End ML Pipeline</h3>
+            <p>Features numerical scaling and categorical encoding encapsulated in a unified scikit-learn Pipeline, preventing data leakage and simplifying prediction logic.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Robust Validations</h3>
+            <p>Includes dual-layer validations (client-side JS and backend Flask API) checking for invalid formats, boundary ranges, and logical constraints.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3>Interactive Interface</h3>
+            <p>A modern user interface leveraging AJAX/Fetch API for seamless, page-reload-free interactions and responsive desktop/mobile layouts.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack Highlight -->
+<section class="tech-section">
+    <h2 class="section-title" style="margin-bottom: 10px;">Technology Stack</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 30px;">This project is built using industry-standard open source frameworks and libraries.</p>
+    <div class="tech-grid">
+        <div class="tech-item">
+            <div class="tech-logo">Py</div>
+            <span class="tech-name">Python Flask</span>
+        </div>
+        <div class="tech-item">
+            <div class="tech-logo">Sl</div>
+            <span class="tech-name">Scikit-Learn</span>
+        </div>
+        <div class="tech-item">
+            <div class="tech-logo">Pd</div>
+            <span class="tech-name">Pandas / NumPy</span>
+        </div>
+        <div class="tech-item">
+            <div class="tech-logo">JS</div>
+            <span class="tech-name">Vanilla JS</span>
+        </div>
+        <div class="tech-item">
+            <div class="tech-logo">CSS</div>
+            <span class="tech-name">Vanilla CSS</span>
+        </div>
+    </div>
+</section>
+{% endblock %}

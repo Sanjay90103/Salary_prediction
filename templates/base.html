@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Salary Prediction System</title>
+    <!-- Favicon - Uses an inline SVG representation to avoid 404s -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">₹</div>
+                <span>PredictSalary</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/" id="nav-home">Home</a></li>
+                    <li><a href="/predict" id="nav-predict">Predict Salary</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Content -->
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Employee Salary Prediction System. All rights reserved.</p>
+            <p>Developed as a Software Engineering Portfolio Project using Flask & Scikit-learn.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Simple script to set active navbar link class based on current path
+        const currentPath = window.location.pathname;
+        const navHome = document.getElementById("nav-home");
+        const navPredict = document.getElementById("nav-predict");
+        
+        if (currentPath === "/" || currentPath === "") {
+            navHome.classList.add("active");
+        } else if (currentPath === "/predict") {
+            navPredict.classList.add("active");
+        }
+    </script>
+</body>
+</html>
