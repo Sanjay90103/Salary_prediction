@@ -140,7 +140,7 @@ def train_model(df):
     r2 = r2_score(y_test, y_pred)
     
     print("--- Model Performance ---")
-    print(f"Mean Absolute Error (MAE): ${mae:.2f}")
+    print(f"Mean Absolute Error (MAE): ₹{mae:.2f}")
     print(f"R2 Score: {r2:.4f}")
     print("-------------------------")
     
